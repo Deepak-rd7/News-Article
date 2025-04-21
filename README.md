@@ -27,6 +27,6 @@ Before running the project, ensure you have the following installed:
 ## Installation
 
 1.Just Clone the repository and change directory to server and run nodemon server.js
-and cd to client and run npm run dev.
+and cd to client and first run npm install then after installation completed run npm run dev.
 
-2.I didn't provide any .gitnore file for this repository.
+2.I didn't provide any .gitnore file for server.Just run nodemon server.js.
