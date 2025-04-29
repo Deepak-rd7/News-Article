@@ -41,15 +41,6 @@ export default function SignupPage() {
     }
   }
 
-  // useEffect(() => {
-  //   if (success) {
-  //     toast.success(message);
-  //     navigate('/dashboard');
-  //   } else  {
-  //     toast.error(message);
-  //   }
-  // }, [status,success,message]);
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">

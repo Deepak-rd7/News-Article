@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { setLoggedIn,checkAuth } from "../slice/authSlice";
-import LoaderComponent from '../components/LoaderComponent'
 import { getBookmarks, removeBoomark } from "../slice/BookmarkSlice";
 import {  TrashIcon } from "lucide-react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import LoaderComponent from "../components/LoaderComponent";
+
+
 export default function BookmarksPage() {
   const dispatch=useDispatch();
 
 const navigate=useNavigate();
-  const {bookmarkedArticles}=useSelector(state=>state.bookmarks)
+  const {bookmarkedArticles,status}=useSelector(state=>state.bookmarks)
 
   
   
@@ -18,7 +20,7 @@ const navigate=useNavigate();
     try {
       const result=await dispatch(removeBoomark(id)).unwrap();
        
-      dispatch(getBookmarks());
+       dispatch(getBookmarks());
       
       toast.success(result.message);
     } catch (error) {
@@ -51,7 +53,7 @@ const navigate=useNavigate();
   
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       
-  { bookmarkedArticles ? bookmarkedArticles.map((article,index)=>(<div key={index} className="bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden">
+  {status==='loading' ? <LoaderComponent/> : bookmarkedArticles.length > 0 ? bookmarkedArticles.map((article,index)=>(<div key={index} className="bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden">
       <img
         src={article.urlToImage}
         alt="article"

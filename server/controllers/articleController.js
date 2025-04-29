@@ -2,8 +2,15 @@ import axios from "axios";
 
 
 export async function teslaArticle(req,res) {
+
+    const date=new Date().toString();
+    
+    
+  const currentDate=date.split('T')[0];
+
+    
     try {
-        const response=await axios.get("https://newsapi.org/v2/everything?q=tesla&from=2025-03-21&sortBy=publishedAt&apiKey=84b0684c72da4e5194a8244f61d0a37e");
+        const response=await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=${currentDate}&sortBy=publishedAt&apiKey=84b0684c72da4e5194a8244f61d0a37e`);
         
          res.json({
             success:true,

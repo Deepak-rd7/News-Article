@@ -4,7 +4,6 @@ import axios from "axios"
 const initialState={
     status:'',
     loggedIn: false,
-    
 }
 
 const axiosConfig = {
@@ -50,9 +49,8 @@ export const login = createAsyncThunk('auth/login',async ({ email, password }, {
 );
 
 export const logout=createAsyncThunk('auth/logout',async()=>{
-    const {data}=await axios.post("http://localhost:3000/users/logout",{},{
-        withCredentials:true
-    }
+    const {data}=await axios.post("http://localhost:3000/users/logout",{},
+       axiosConfig
         
     )
 
@@ -61,10 +59,7 @@ export const logout=createAsyncThunk('auth/logout',async()=>{
 
 export const checkAuth=createAsyncThunk('auth/checkAuth',async(_,{ rejectWithValue })=>{
   try {
-    const {data}=await axios.get('http://localhost:3000/users/checkAuth',{
-      withCredentials:true
-    })
- 
+    const {data}=await axios.get('http://localhost:3000/users/checkAuth',axiosConfig)
     if(!data.success){
       return rejectWithValue(data)
     }
@@ -86,7 +81,8 @@ const authSlice=createSlice({
         setLoggedOut:(state)=>{
           state.loggedIn=false
         }
-    }
+    },
+ 
 
 })
 

@@ -38,7 +38,7 @@ export const getBookmarks=createAsyncThunk('bookmark/getBookmarks',async(_,{reje
  
        return data;
     } catch (error) {
-    return rejectWithValue(error.message);
+       return rejectWithValue(error.message);
      
     }
  })
@@ -56,7 +56,7 @@ export const getBookmarks=createAsyncThunk('bookmark/getBookmarks',async(_,{reje
 
      return data;
   } catch (error) {
-  return rejectWithValue(error.message);
+    return rejectWithValue(error.message);
    
   }
 })

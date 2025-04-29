@@ -9,6 +9,8 @@ import { fetchBuisnessArticles,fetchTeslaArticles,fetchTechCrunchArticles, fetch
 
 export default function NewsFeedPage() {
 
+  
+  
     const {articleType}=useParams();
     const dispatch=useDispatch();
     const navigate=useNavigate();
