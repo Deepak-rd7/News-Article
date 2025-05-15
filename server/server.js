@@ -13,13 +13,13 @@ const app=express();
 
 app.use(express.json());
 app.use(cors({
-    origin:"http://localhost:5173",   
+    origin:process.env.UI_URL,   
     credentials: true                 
   }));
 app.use(cookieParser());
 dbConnect();
 
-const port=process.env.PORT;
+const port=process.env.PORT||3000;
 
 app.use('/users',userRouter);
 app.use('/articles',articleRoutes);
