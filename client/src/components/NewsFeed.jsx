@@ -7,11 +7,11 @@ import LoaderComponent from "./LoaderComponent";
 
 export default function NewsFeed({ articles = [] }) {
   const [allArticles, setAllArticles] = useState([]);
-  const [itemstoView, setItemstoView] = useState(10);
+   const [itemstoView, setItemstoView] = useState(10);
   const [visibleData, setVisibledata] = useState([]);
 
   
-
+  
   useEffect(() => {
     setAllArticles(articles);
     setVisibledata(articles.slice(0, 10));
@@ -19,6 +19,9 @@ export default function NewsFeed({ articles = [] }) {
 
   function handleViewmore() {
     setItemstoView(itemstoView + 10);
+    
+    
+    
     setVisibledata(allArticles.slice(0, itemstoView));
   }
 

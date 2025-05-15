@@ -10,10 +10,11 @@ const axiosConfig = {
   withCredentials: true, 
 };
 
+
 export const register = createAsyncThunk('auth/register',async ({ username, email, password }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        'http://localhost:3000/users/register',
+      `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/register`,
         { username, email, password },
         axiosConfig
       );
@@ -32,7 +33,7 @@ export const register = createAsyncThunk('auth/register',async ({ username, emai
 export const login = createAsyncThunk('auth/login',async ({ email, password }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        'http://localhost:3000/users/login',
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/login`,
         { email, password },
         axiosConfig
       );
@@ -49,7 +50,7 @@ export const login = createAsyncThunk('auth/login',async ({ email, password }, {
 );
 
 export const logout=createAsyncThunk('auth/logout',async()=>{
-    const {data}=await axios.post("http://localhost:3000/users/logout",{},
+    const {data}=await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/logout`,{},
        axiosConfig
         
     )
@@ -59,7 +60,7 @@ export const logout=createAsyncThunk('auth/logout',async()=>{
 
 export const checkAuth=createAsyncThunk('auth/checkAuth',async(_,{ rejectWithValue })=>{
   try {
-    const {data}=await axios.get('http://localhost:3000/users/checkAuth',axiosConfig)
+    const {data}=await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/checkAuth`,axiosConfig)
     if(!data.success){
       return rejectWithValue(data)
     }

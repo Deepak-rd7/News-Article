@@ -9,7 +9,7 @@ const initialState={
 
 export const addBookmark=createAsyncThunk('bookmark/addBookmark',async({title,description,url,urlToImage,source,publisedAt},{rejectWithValue})=>{
    try {
-    const {data}=await axios.post("http://localhost:3000/bookmarks/addBookmark",{title,description,url,urlToImage,source,publisedAt},{
+    const {data}=await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/bookmarks/addbookmark`,{title,description,url,urlToImage,source,publisedAt},{
         withCredentials:true
       })
 
@@ -27,7 +27,7 @@ export const addBookmark=createAsyncThunk('bookmark/addBookmark',async({title,de
 
 export const getBookmarks=createAsyncThunk('bookmark/getBookmarks',async(_,{rejectWithValue})=>{
     try {
-     const {data}=await axios.get("http://localhost:3000/bookmarks/getBookmark",{
+     const {data}=await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/bookmarks/getBookmark`,{
          withCredentials:true
        })
 
@@ -45,7 +45,7 @@ export const getBookmarks=createAsyncThunk('bookmark/getBookmarks',async(_,{reje
 
  export const removeBoomark=createAsyncThunk('bookmark/removeBookmark',async(id,{rejectWithValue})=>{
   try {
-   const {data}=await axios.delete(`http://localhost:3000/bookmarks/removeBookmark/${id}`,{
+   const {data}=await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/bookmarks/removeBookmark/${id}`,{
        withCredentials:true
      })
 

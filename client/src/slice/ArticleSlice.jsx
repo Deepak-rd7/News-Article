@@ -15,25 +15,25 @@ const initialState={
 }
 
 export const fetchBuisnessArticles=createAsyncThunk("articles/buisnessArticles",async ()=>{
-    const {data}= await axios.get("http://localhost:3000/articles/buisness")
+    const {data}= await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/articles/buisness`)
 
     return data.articles;
 })
 
 export const fetchTeslaArticles=createAsyncThunk("articles/teslaArticles",async ()=>{
-    const {data}= await axios.get("http://localhost:3000/articles/tesla")
+    const {data}= await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/articles/tesla`)
 
     return data.articles;
 })
 
 export const fetchTechCrunchArticles=createAsyncThunk("articles/techCrunchArticles",async ()=>{
-    const {data}= await axios.get("http://localhost:3000/articles/techCrunch")
+    const {data}= await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/articles/techCrunch`)
 
     return data.articles;
 })
 
 export const fetchGadgetsArticles=createAsyncThunk("articles/gadgetsArticles",async ()=>{
-    const {data}= await axios.get("http://localhost:3000/articles/mobiles")
+    const {data}= await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/artciles/mobiles`)
 
     return data.articles;
 })
